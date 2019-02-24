@@ -36,10 +36,31 @@ int main()
 
     for(i = 1;i<=numArray;i++){
         for(j = 1;j<=numArray;j++){
-                while(res!=0){
-                    res = 4;
 
-                }
+                    if((i-n)>0&&(j-n)>0){
+                        sum+=arrayA[i-n][j-n];
+
+                    }else if((i-n)>0){
+                        sum+=arrayA[i-n][j];
+
+                    }else if((i-n)>0&&(j+n)<=numArray){
+                        sum+=arrayA[i-n][j+n];
+
+                    }else if((j-n)>0){
+                        sum+=arrayA[i][j-n];
+
+                    }else if((i+n)<=numArray&&(j-n)>0){
+                        sum+=arrayA[i+n][j-n];
+
+                    }else if((i+n)<=numArray){
+                        sum+=arrayA[i+n][j];
+
+                    }else if((i+n)<numArray&&(j+n)<numArray){
+                        sum+=arrayA[i+n][j+n];
+
+                    }else{
+                        sum+=arrayA[i][j];
+                    };
         }
     }
     cout <<sum <<"\n";
