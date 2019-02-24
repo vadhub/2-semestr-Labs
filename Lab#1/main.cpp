@@ -9,7 +9,7 @@ int main()
 
     int n = 0, i,j,kx = 0,ky = 0;
 
-    float sum = 0, res = 0;
+    float sum = 0, res = 0, result = 0;
     int formul = 0;
     cin >> numArray;
 
@@ -39,35 +39,46 @@ int main()
 
                     if((i-n)>0&&(j-n)>0){
                         sum+=arrayA[i-n][j-n];
+                        res++;
 
                     }else if((i-n)>0){
                         sum+=arrayA[i-n][j];
+                        res++;
 
                     }else if((i-n)>0&&(j+n)<=numArray){
                         sum+=arrayA[i-n][j+n];
+                        res++;
 
                     }else if((j-n)>0){
                         sum+=arrayA[i][j-n];
+                        res++;
 
                     }else if((i+n)<=numArray&&(j-n)>0){
                         sum+=arrayA[i+n][j-n];
+                        res++;
 
                     }else if((i+n)<=numArray){
                         sum+=arrayA[i+n][j];
+                        res++;
 
                     }else if((i+n)<numArray&&(j+n)<numArray){
                         sum+=arrayA[i+n][j+n];
+                        res++;
 
                     }else{
                         sum+=arrayA[i][j];
+                        res++;
                     };
+
+                    arrayB[i][j] = sum/res;
+
         }
     }
-    cout <<sum <<"\n";
+    cout <<result <<"\n";
 
      for(i = 1;i<=numArray;i++){
         for(j =1;j<=numArray;j++){
-            cout << arrayA[i][j];
+            cout << arrayB[i][j];
 
             cout << "\t";
         }
