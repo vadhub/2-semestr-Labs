@@ -53,7 +53,16 @@ int main()
                 }else if(j<=numArray&&(j+res)<=numArray){//right
                     sum += arrayA[i][j+res];
                     res++;
-                }else if()
+                }else if(i<=numArray&&(i+res)<=numArray&&j>=0&&(j-res)>=0){ //left-down
+                    sum += arrayA[i+res][j-res];
+                    res+;
+                }else if(i<=numArray&&(i+res)<=numArray){ //down
+                    sum += arrayA[i+res][j];
+                    res++
+                }else if(i<=numArray&&(i+res)<=numArray&&j<=numArray&&(j+res)<numArray){ //down-right
+                    sum += arrayA[i+res][j+res];
+                    res++;
+                }
             }
         }
     }
