@@ -37,41 +37,6 @@ int main()
     for(i = 1;i<=numArray;i++){
         for(j = 1;j<=numArray;j++){
 
-                    if((i-n)>0&&(j-n)>0){
-                        sum+=arrayA[i-n][j-n];
-                        res++;
-
-                    }else if((i-n)>0){
-                        sum+=arrayA[i-n][j];
-                        res++;
-
-                    }else if((i-n)>0&&(j+n)<=numArray){
-                        sum+=arrayA[i-n][j+n];
-                        res++;
-
-                    }else if((j-n)>0){
-                        sum+=arrayA[i][j-n];
-                        res++;
-
-                    }else if((i+n)<=numArray&&(j-n)>0){
-                        sum+=arrayA[i+n][j-n];
-                        res++;
-
-                    }else if((i+n)<=numArray){
-                        sum+=arrayA[i+n][j];
-                        res++;
-
-                    }else if((i+n)<numArray&&(j+n)<numArray){
-                        sum+=arrayA[i+n][j+n];
-                        res++;
-
-                    }else{
-                        sum+=arrayA[i][j];
-                        res++;
-                    };
-
-                    arrayB[i][j] = sum/res;
-
         }
     }
     cout <<result <<"\n";
