@@ -50,7 +50,10 @@ int main()
                 }else if(j>=0&&(j-res)>=0){ //left
                     sum += arrayA[i][j-res];
                     res++;
-                }else if(j<)
+                }else if(j<=numArray&&(j+res)<=numArray){//right
+                    sum += arrayA[i][j+res];
+                    res++;
+                }else if()
             }
         }
     }
