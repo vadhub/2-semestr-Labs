@@ -36,7 +36,22 @@ int main()
 
     for(i = 1;i<=numArray;i++){
         for(j = 1;j<=numArray;j++){
-
+            while(res<formul){
+                    sum = arrayA[i][j];
+                if(i>=0||(i-res)>=0&&j>=0&&(j-res)>=0){ //left-up
+                    sum += arrayA[i-res][j-res];
+                    res++;
+                }else if(i>0=&&(i-res)>=0){ //up
+                    sum += arrayA[i-res][j];
+                    res++;
+                }else if(i>=0&&(i-res)>=0&&(j+res)<=numArray&&j<=numArray){ //right-up
+                    sum += arrayA[i-res][j+res];
+                    res++;
+                }else if(j>=0&&(j-res)>=0){ //left
+                    sum += arrayA[i][j-res];
+                    res++;
+                }else if(j<)
+            }
         }
     }
     cout <<result <<"\n";
