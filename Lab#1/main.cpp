@@ -31,6 +31,7 @@ int main()
         for(j = 1;j<=numArray;j++){
             cout << "array[" << i << "][" << j <<"]: ";
             cin >> arrayA[i][j];
+            arrayB[i][j] = 0;
         }
     }
 
@@ -38,35 +39,44 @@ int main()
 
     for(i = 1;i<=numArray;i++){
         for(j = 1;j<=numArray;j++){
-            while(res<formul){
-                    sum = arrayA[i][j];
-                if(i>=0&&(i-res)>=0&&j>=0&&(j-res)>=0){ //left-up
-                    sum += arrayA[i-res][j-res];
-                    res++;
-                }else if(i>=0&&(i-res)>=0){ //up
-                    sum += arrayA[i-res][j];
-                    res++;
-                }else if(i>=0&&(i-res)>=0&&(j+res)<=numArray&&j<=numArray){ //right-up
-                    sum += arrayA[i-res][j+res];
-                    res++;
-                }else if(j>=0&&(j-res)>=0){ //left
-                    sum += arrayA[i][j-res];
-                    res++;
-                }else if(j<=numArray&&(j+res)<=numArray){//right
-                    sum += arrayA[i][j+res];
-                    res++;
-                }else if(i<=numArray&&(i+res)<=numArray&&j>=0&&(j-res)>=0){ //left-down
-                    sum += arrayA[i+res][j-res];
-                    res++;
-                }else if(i<=numArray&&(i+res)<=numArray){ //down
-                    sum += arrayA[i+res][j];
-                    res++;
-                }else if(i<=numArray&&(i+res)<=numArray&&j<=numArray&&(j+res)<=numArray){ //down-right
-                    sum += arrayA[i+res][j+res];
+            if(numArray == 0){
+                arrayB[i][j] = 0;
+            }else if(numArray==1){
+                arrayB[i][j] = 1;
+            }else{
+                while(res<n){
+                        sum = arrayA[i][j];
+                    if(i>=0&&(i-res)>=0&&j>=0&&(j-res)>=0){ //left-up
+                        sum += arrayA[i-res][j-res];
+
+                    }else if(i>=0&&(i-res)>=0){ //up
+                        sum += arrayA[i-res][j];
+
+                    }else if(i>=0&&(i-res)>=0&&(j+res)<=numArray&&j<=numArray){ //right-up
+                        sum += arrayA[i-res][j+res];
+
+                    }else if(j>=0&&(j-res)>=0){ //left
+                        sum += arrayA[i][j-res];
+
+                    }else if(j<=numArray&&(j+res)<=numArray){//right
+                        sum += arrayA[i][j+res];
+
+                    }else if(i<=numArray&&(i+res)<=numArray&&j>=0&&(j-res)>=0){ //left-down
+                        sum += arrayA[i+res][j-res];
+
+                    }else if(i<=numArray&&(i+res)<=numArray){ //down
+                        sum += arrayA[i+res][j];
+
+                    }else if(i<=numArray&&(i+res)<=numArray&&j<=numArray&&(j+res)<=numArray){ //down-right
+                        sum += arrayA[i+res][j+res];
+
+                    }else {
+                        arrayB[i][j] = sum;
+                    }
                     res++;
                 }
+                arrayB[i][j] = sum / res;
             }
-            arrayB[i][j] = sum / res;
         }
     }
 
