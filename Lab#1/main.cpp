@@ -7,9 +7,9 @@ int main()
     cout << "enter the num a column and row:\n";
     int numArray = 0;
 
-    float n = 0, i,j;
+    int n = 0, i,j, res = 0;
 
-    float sum = 0, res = 0, result = 0;
+    float sum = 0, result = 0;
     float formul = 0;
     cin >> numArray;
 
@@ -41,7 +41,7 @@ int main()
                 if(i>=0&&(i-res)>=0&&j>=0&&(j-res)>=0){ //left-up
                     sum += arrayA[i-res][j-res];
                     res++;
-                }else if(i>0=&&(i-res)>=0){ //up
+                }else if(i>=0&&(i-res)>=0){ //up
                     sum += arrayA[i-res][j];
                     res++;
                 }else if(i>=0&&(i-res)>=0&&(j+res)<=numArray&&j<=numArray){ //right-up
@@ -55,11 +55,11 @@ int main()
                     res++;
                 }else if(i<=numArray&&(i+res)<=numArray&&j>=0&&(j-res)>=0){ //left-down
                     sum += arrayA[i+res][j-res];
-                    res+;
+                    res++;
                 }else if(i<=numArray&&(i+res)<=numArray){ //down
                     sum += arrayA[i+res][j];
-                    res++
-                }else if(i<=numArray&&(i+res)<=numArray&&j<=numArray&&(j+res)<numArray){ //down-right
+                    res++;
+                }else if(i<=numArray&&(i+res)<=numArray&&j<=numArray&&(j+res)<=numArray){ //down-right
                     sum += arrayA[i+res][j+res];
                     res++;
                 }
@@ -72,7 +72,7 @@ int main()
 
      for(i = 1;i<=numArray;i++){
         for(j =1;j<=numArray;j++){
-            cout << arrayB[i][j];
+            cout << arrayA[i][j];
 
             cout << "\t";
         }
