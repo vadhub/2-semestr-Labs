@@ -19,9 +19,11 @@ int main()
 
     formul = 2.0*n + 1.0;
     float **arrayA = new float *[numArray];
+    float **arrayB = new float *[numArray];
 
     for (i = 1; i<=numArray;i++){
         arrayA[i] = new float[numArray];
+        arrayB[i] = new float[numArray];
 
     }
     cout << "enter the numbers:\n";
@@ -64,15 +66,14 @@ int main()
                     res++;
                 }
             }
-            result = sum / res;
-            cout <<result <<"\n";
+            arrayB[i][j] = sum / res;
         }
     }
 
 
      for(i = 1;i<=numArray;i++){
         for(j =1;j<=numArray;j++){
-            cout << arrayA[i][j];
+            cout << arrayB[i][j];
 
             cout << "\t";
         }
