@@ -43,23 +43,21 @@ int main()
                 for(k = 1;k<=formul;k++){
                     for(f = 1; f<=formul; f++){
                         sum += arrayA[i][j];
-                        if(i>1){
+                        if(i>1&&i<numArray&&js){
                             sum+=arrayA[i+k][j];
                             res++;
-                        }else if(j>1){
+                        }else if(j>1&&j<numArray){
                             sum+=arrayA[i][j+f];
                             res++;
-                        }else if(j<numArray){
+                        }else if(j<numArray&&j>1){
                             sum+=arrayA[i][j-f];
                             res++;
-                        }else if(i<numArray){
+                        }else if(i<numArray&&i>1){
                             sum+=arrayA[i-k][j];
                             res++;
                         }else{
                             sum+=0;
                         }
-
-                        cout<<sum<<"\n";
                     }
                 }
 
