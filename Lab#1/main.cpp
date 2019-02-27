@@ -4,12 +4,12 @@ using namespace std;
 
 int main()
 {
-    cout << "enter the num a column and row:\n";
+    cout << "enter the array size:\n";
     int numArray = 0;
 
     int n = 0;
     int i =0, j = 0;
-    int k = 0, f = 0;
+    int k = 0, g = 0;
 
     float sum = 0, result = 0, res = 0;
     int formul = 0;
@@ -41,25 +41,29 @@ int main()
     for(i = 1;i<=numArray;i++){
         for(j = 1;j<=numArray;j++){
                 for(k = 1;k<=formul;k++){
-                    for(f = 1; f<=formul; f++){
+                    for(g = 1; g<=formul; g++){
                         sum += arrayA[i][j];
-                        if(i>1&&i<numArray&&js){
+                        if(i>1&&i<=numArray){
+                            if(j>1&&j)
                             sum+=arrayA[i+k][j];
-                            res++;
-                        }else if(j>1&&j<numArray){
-                            sum+=arrayA[i][j+f];
-                            res++;
-                        }else if(j<numArray&&j>1){
-                            sum+=arrayA[i][j-f];
-                            res++;
-                        }else if(i<numArray&&i>1){
+
+                        }else if(j>1&&j<=numArray){
+                            sum+=arrayA[i][j+g];
+
+                        }else if(j<=numArray&&j>1){
+                            sum+=arrayA[i][j-g];
+
+                        }else if(i<=numArray&&i>1){
                             sum+=arrayA[i-k][j];
-                            res++;
+
                         }else{
-                            sum+=0;
+                            sum += 0;
                         }
+                        res++;
                     }
                 }
+
+                cout<<"a\n";
 
                 if(res>0){
                     arrayB[i][j] = sum /res;
@@ -72,7 +76,7 @@ int main()
         }
     }
 
-
+        cout<<"b\n";
      for(i = 1;i<=numArray;i++){
         for(j =1;j<=numArray;j++){
             cout << arrayB[i][j];
