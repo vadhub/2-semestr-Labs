@@ -43,19 +43,36 @@ int main()
                 for(k = 1;k<=formul;k++){
                     for(g = 1; g<=formul; g++){
                         sum += arrayA[i][j];
-                        if(i>1&&i<=numArray){
-                            if(j>1&&j)
-                            sum+=arrayA[i+k][j];
+                        if(i>1&&i<numArray){
+                            if((i+k)>numArray){
+                                sum += 0;
+                            }else{
+                                sum+=arrayA[i+k][j];
+                            }
+                            cout<<"1\n";
 
-                        }else if(j>1&&j<=numArray){
-                            sum+=arrayA[i][j+g];
+                        }else if(j>1&&j<numArray){
+                            if((j+g)>numArray){
+                                sum += 0;
+                            }else{
+                                sum+=arrayA[i][j+g];
+                            }
+                            cout<<"2\n";
+                        }else if(j<numArray&&j>1){
+                            if((j-g)<1){
+                                sum += 0;
+                            }else{
+                                sum+=arrayA[i][j-g];
+                            }
+                            cout<<"3\n";
 
-                        }else if(j<=numArray&&j>1){
-                            sum+=arrayA[i][j-g];
-
-                        }else if(i<=numArray&&i>1){
-                            sum+=arrayA[i-k][j];
-
+                        }else if(i<numArray&&i>1){
+                            if((j-k)<0){
+                                sum += 0;
+                            }else{
+                                sum+=arrayA[i-k][j];
+                            }
+                            cout<<"4\n";
                         }else{
                             sum += 0;
                         }
@@ -63,12 +80,13 @@ int main()
                     }
                 }
 
-                cout<<"a\n";
+
 
                 if(res>0){
                     arrayB[i][j] = sum /res;
                     sum = 0;
                     res = 0;
+                    cout<<"a\n";
                 }else {
                     arrayB[i][j] = 0;
                     sum = 0;
