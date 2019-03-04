@@ -11,7 +11,7 @@ const int height = 20;
 enum dir {stop = 0, left_, up_, right_, down_};
 dir e;
 
-int x = 0, y = 0, dotX, dotY, score;
+int x = 0, y = 0, dotX = 0, dotY = 0, score;
 
 
 void setup(){
@@ -41,13 +41,13 @@ void draw(){
                 cout<<"#";
             }
 
-                                    if(i == y&&j == x){
-                                        cout<<"O";
-                                    }else if(i == dotX && j == dotY){
-                                        cout<<"@";
-                                    }else{
-                                        cout<<" ";
-                                    }
+            if(i == y&&j == x){
+                cout<<"O";
+            }else if(i == dotX && j == dotY){
+                cout<<"X";
+            }else{
+                cout<<" ";
+            }
         }
         cout << endl;
     }
@@ -98,14 +98,14 @@ void gamePlay(){
             break;
     }
 
-                                        if(x > width-2)
-                                            x = 0;
-                                        if(x < 0)
-                                            x = width-2;
-                                        if(y > height-1)
-                                            y = 0;
-                                        if(y < 0)
-                                            y = height-1;
+    if (x > width-2)
+        x = 0;
+    if (x < 0)
+        x = width-2;
+    if (y > height-1)
+        y = 0;
+    if (y < 0)
+        y = height-1;
 
     if(x == dotX && y == dotY){
         score += 20;
