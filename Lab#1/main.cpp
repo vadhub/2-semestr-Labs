@@ -66,7 +66,8 @@ int main()
                             }
                             cout<<"3\n";
 
-                        }else if(i<numArray&&i>1){
+                        }else if(i<numArray&&i>z
+                                 ){
                             if((j-k)<0){
                                 sum += 0;
                             }else{
