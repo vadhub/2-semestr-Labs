@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    string str = "({)}";
+    string str = "({})";
     stack<char> stk;
 
     stk.push(str[0]);
@@ -26,14 +26,14 @@ int main()
             }else{
                 break;
             }
-        }else if(str[i] == '{'){
-            if(stk.top()=='}'){
+        }else if(str[i] == '}'){
+            if(stk.top()=='{'){
                 stk.pop();
             }else{
                 break;
             }
-        }else if(str[i] == '<'){
-            if(stk.top()=='>'){
+        }else if(str[i] == '>'){
+            if(stk.top()=='<'){
                 stk.pop();
             }else{
                 break;
