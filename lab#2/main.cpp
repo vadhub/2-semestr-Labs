@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    string str = "<<({})>>";
+    string str = "({})>";
     stack<char> stk;
 
     stk.push(str[0]);
@@ -38,10 +38,11 @@ int main()
             }else{
                 break;
             }
-        }else if((str[i] == ')'||str[i] == ']'||str[i] == '}'||str[i] == '>')&&stk.empty()){
+        }else if((str[i] == ')'|| str[i] == ']'||str[i] == '}'||str[i] == '>')&&stk.empty()){
             stk.push(str[i]);
         }
     }
+
 
     if(stk.empty()){
         cout<<"bracket all right";

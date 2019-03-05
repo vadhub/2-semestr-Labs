@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <windows.h>
+#include <queue>
 
 using namespace std;
 
@@ -11,12 +12,16 @@ const int height = 20;
 enum dir {stop = 0, left_, up_, right_, down_};
 dir e;
 
-int x = 0, y = 0, dotX = 0, dotY = 0, score;
+int sizeSnake;
+
+queue<int> coordsX;
+queue<int> coordsY;
+int x, y, dotX, dotY, score;
 
 
 void setup(){
     gameOver = false;
-
+    sizeSnake = 3;
     e = stop;
 
     x = width / 2 - 1;
@@ -30,7 +35,7 @@ void setup(){
 
 void draw(){
     system("cls");  //clear window
-    for(int i = 0;i<width+1; i++){
+    for(int i = 0;i<width; i++){
         cout<<"#";
     }
     cout<<endl;
@@ -39,11 +44,12 @@ void draw(){
         for(int j = 0;j<width;j++){
             if(j == 0 || j == width-1){
                 cout<<"#";
-            }
-
-            if(i == y&&j == x){
+            }else if(i == y&&j == x){
+                for(int t = 0; t<sizeSnake;t++){
+                    cout<<"o";
+                }
                 cout<<"O";
-            }else if(i == dotX && j == dotY){
+            }else if(i == dotY && j == dotX){
                 cout<<"X";
             }else{
                 cout<<" ";
@@ -52,12 +58,13 @@ void draw(){
         cout << endl;
     }
 
-    for(int i = 0;i<width+1; i++){
+    for(int i = 0;i<width; i++){
         cout<<"#";
     }
     cout<<endl;
     cout << "Score: "<< score<< endl;
-
+    //cout << x<<" "<<y<<endl;
+    //cout << dotX<<" "<<dotY<<endl;
 }
 
 void inKey(){
@@ -109,12 +116,12 @@ void gamePlay(){
 
     if(x == dotX && y == dotY){
         score += 20;
+
         dotX = rand() % width;
         dotY = rand() % height;
     }
 
 }
-
 
 int main()
 {

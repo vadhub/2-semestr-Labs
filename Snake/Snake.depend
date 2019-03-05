@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1551714800 source:b:\labs\snake\main.cpp
+1551781780 source:b:\labs\snake\main.cpp
 	<iostream>
 	<stdlib.h>
 	<conio.h>
 	<windows.h>
+	<queue>
 
