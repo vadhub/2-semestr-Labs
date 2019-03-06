@@ -21,8 +21,6 @@ int chit;
 
 void setup(){
     gameOver = false;
-    sizeSnake = 3;
-    e = stop;
 
     x = width / 2 - 1;
     y = height / 2 - 1;
@@ -147,6 +145,11 @@ void gamePlay(){
         sizeSnake++;
         dotX = rand() % width;
         dotY = rand() % height;
+    }
+    for(int i = 0; i<sizeSnake; i++){
+        if(tX[i]== x && tY[i] == y){
+            gameOver = true;
+        }
     }
 
     if(chit == 2){
