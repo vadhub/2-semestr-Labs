@@ -12,11 +12,11 @@ const int height = 20;
 enum dir {stop = 0, left_, up_, right_, down_};
 dir e;
 
+int tX[100];
+int tY[100];
 int sizeSnake;
-
-queue<int> coordsX;
-queue<int> coordsY;
 int x, y, dotX, dotY, score;
+int chit;
 
 
 void setup(){
@@ -45,14 +45,20 @@ void draw(){
             if(j == 0 || j == width-1){
                 cout<<"#";
             }else if(i == y&&j == x){
-                for(int t = 0; t<sizeSnake;t++){
-                    cout<<"o";
-                }
                 cout<<"O";
             }else if(i == dotY && j == dotX){
                 cout<<"X";
             }else{
-                cout<<" ";
+                bool print = false;
+                for(int k = 0;k<sizeSnake; k++){
+                    if(tX[k] == j && tY[k] == i){
+                        cout<<"o";
+                        print = true;
+                    }
+                }
+                if(!print){
+                    cout<<" ";
+                }
             }
         }
         cout << endl;
@@ -63,6 +69,7 @@ void draw(){
     }
     cout<<endl;
     cout << "Score: "<< score<< endl;
+    cout << chit<< endl;
     //cout << x<<" "<<y<<endl;
     //cout << dotX<<" "<<dotY<<endl;
 }
@@ -85,11 +92,32 @@ void inKey(){
             case 'x':
                 gameOver = true;
                 break;
+            case 'b':
+                chit +=1;
+            case 'i':
+                chit +=-2;
+            case 'g':
+                chit +=3;
         }
     }
 }
 
 void gamePlay(){
+    int startX = tX[0];
+    int startY = tY[0];
+    int nextX, nextY;
+    tX[0] = x;
+    tY[0] = y;
+
+    for(int i = 0;i<sizeSnake; i++){
+            nextX = tX[i];
+            nextY = tY[i];
+            tX[i] = startX;
+            tY[i] = startY; //321>  213>
+            startX = nextX;
+            startY = nextY;
+    }
+
     switch(e){
         case left_:
             x--;
@@ -105,10 +133,10 @@ void gamePlay(){
             break;
     }
 
-    if (x > width-2)
-        x = 0;
+    if (x > width)
+        x = 1;
     if (x < 0)
-        x = width-2;
+        x = width;
     if (y > height-1)
         y = 0;
     if (y < 0)
@@ -116,15 +144,22 @@ void gamePlay(){
 
     if(x == dotX && y == dotY){
         score += 20;
-
+        sizeSnake++;
         dotX = rand() % width;
         dotY = rand() % height;
     }
 
+    if(chit == 2){
+        score += 100000000;
+        chit = 0;
+    }
+    if(chit == 6){
+        sizeSnake += 20;
+        chit = 0;
+    }
 }
 
-int main()
-{
+int main(){
     setup();
     while(!gameOver){
         inKey();
