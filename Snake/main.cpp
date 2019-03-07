@@ -21,6 +21,7 @@ int chit;
 
 void setup(){
     gameOver = false;
+    e = stop;
 
     x = width / 2 - 1;
     y = height / 2 - 1;
@@ -101,13 +102,15 @@ void inKey(){
 }
 
 void gamePlay(){
+
+
     int startX = tX[0];
     int startY = tY[0];
     int nextX, nextY;
     tX[0] = x;
     tY[0] = y;
 
-    for(int i = 0;i<sizeSnake; i++){
+    for(int i = 1;i<sizeSnake; i++){
             nextX = tX[i];
             nextY = tY[i];
             tX[i] = startX;
