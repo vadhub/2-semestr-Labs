@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <windows.h>
-#include <queue>
+#include <Windows.h>
+
 
 using namespace std;
 
@@ -33,7 +34,11 @@ void setup(){
 }
 
 void draw(){
-    system("cls");  //clear window
+    HANDLE hd = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD cd;
+    cd.X = 0;
+    cd.Y = 0;
+    SetConsoleCursorPosition(hd, cd);
     for(int i = 0;i<width; i++){
         cout<<"#";
     }
@@ -167,6 +172,8 @@ void gamePlay(){
 
 int main(){
     setup();
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, (WORD) ((15 << 2) | 2));
     while(!gameOver){
         inKey();
         gamePlay();
