@@ -15,6 +15,8 @@ dir e;
 
 int tX[100];
 int tY[100];
+int wallX[20];
+int wallY[20];
 int sizeSnake;
 int x, y, dotX, dotY, score;
 int chit;
@@ -42,6 +44,7 @@ void draw(){
     for(int i = 0;i<width; i++){
         cout<<"#";
     }
+
     cout<<endl;
 
     for(int i = 0;i<height; i++){
@@ -52,6 +55,8 @@ void draw(){
                 cout<<"O";
             }else if(i == dotY && j == dotX){
                 cout<<"X";
+            }else if(wallX[4]==i&&wallY[4]==j){
+                cout<<"+";
             }else{
                 bool print = false;
                 for(int k = 0;k<sizeSnake; k++){
