@@ -1,16 +1,16 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
+#include <string>
 
 using namespace std;
 
 class Product{
        private: string nameProduct;
-       private: int countProduct;
+       private: int countProduct = 10;
        private: int priceProduct;
        private: int countSoldProduct;
        private: string products[30];
-       private: int index[countProduct];
 
        //constructors on all happen life
 
@@ -55,10 +55,18 @@ class Product{
             i++;
         }
 
+        private: string convector(int intor){
+                std::string s = std::to_string(intor);
+                return s;
+        }
+
         private: void table(){
-            cout<<"************************************";
+            print("************************************");
+                string strI = (i);
+                string stRpriceProduct = convector(priceProduct);
+                string stRCountProduct = convector(countProduct);
             for(int i = 0;i<countProduct;i++){
-                print();
+                print("* " + strI + " * "+ nameProduct + " * " + stRPriceProduct + " * "+stRCountProduct+" *");
             }
         }
 
@@ -70,5 +78,6 @@ class Product{
 
 int main()
 {
+
     return 0;
 }
