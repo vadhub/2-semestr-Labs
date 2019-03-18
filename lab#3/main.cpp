@@ -62,10 +62,10 @@ class Product{
 
         private: void table(){
             print("************************************");
-                string strI = (i);
-                string stRpriceProduct = to_string(priceProduct);
-                string stRCountProduct = std::to_string(countProduct);
+                std::string stRpriceProduct = std::to_string(priceProduct);
+                std::string stRCountProduct = std::to_string(countProduct);
             for(int i = 0;i<countProduct;i++){
+                    std::string strI = std::to_string(i);
                 print("* " + strI + " * "+ nameProduct + " * " + stRPriceProduct + " * "+stRCountProduct+" *");
             }
         }
