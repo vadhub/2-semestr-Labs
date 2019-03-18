@@ -55,16 +55,16 @@ class Product{
             i++;
         }
 
-        private: string convector(int intor){
+        /*private: string convector(int intor){
                 std::string s = std::to_string(intor);
                 return s;
-        }
+        }*/
 
         private: void table(){
             print("************************************");
                 string strI = (i);
-                string stRpriceProduct = convector(priceProduct);
-                string stRCountProduct = convector(countProduct);
+                string stRpriceProduct = to_string(priceProduct);
+                string stRCountProduct = std::to_string(countProduct);
             for(int i = 0;i<countProduct;i++){
                 print("* " + strI + " * "+ nameProduct + " * " + stRPriceProduct + " * "+stRCountProduct+" *");
             }
