@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <string.h>
 #include <string>
-#include <vector>
 
 using namespace std;
 
@@ -10,45 +8,40 @@ class Product{
        private: int countProduct;
        private: string nameProduct;
        private: double priceProduct;
-       private: int countSoldProduct;
+       private: int countSoldProduct = 0;
 
-       public: Product(int c, string name, double p, int sl){
-           countProduct = c;
-           nameProduct = name;
-           priceProduct = p;
-           countSoldProduct = sl;
-       };
 
         public: Product(int c, string name, double p){
-           countProduct = c;
+            if(c<0){
+                countProduct = 0;
+            }else{
+                countProduct = c;
+            }
            nameProduct = name;
-           priceProduct = p;
-       };
 
-        public: Product(int c, string name){
-           countProduct = c;
-           nameProduct = name;
+           if(p<0){
+                priceProduct = 0;
+           }else{
+
+                priceProduct = p;
+                p = price();
+            }
        };
 
        //copy constructor
        public: Pruduct(Product & obj){
-
+                private: int countProduct;
+                private: string nameProduct;
+                private: double priceProduct;
+                private: int countSoldProduct = 0;
        }
 
        //destruct
-       ~public: Pruduct(){
-
+       public: ~Product(){
+            cout<<"destructor"<<endl;
        }
 
-        public: Product(string name){
-           nameProduct = name;
-       };
-
-        public: Product(int c){
-           countProduct = c;
-       };
-
-        public: Product(){};
+        public: Product(){ cout<<"constructor without parameters"<<endl;};
 
         public: void buy(){
             countProduct--;
@@ -61,18 +54,19 @@ class Product{
         }
 
         public: void features(){
-            cout<<"* "<<nameProduct<<" * "<<priceProduct<<" * "<<countProduct;
+            cout<<"| "<<nameProduct<<" | "<<priceProduct<<" | "<<countProduct<< endl;
         }
 
         private: int price(){
             if(priceProduct>10&&countProduct>20){
                priceProduct = priceProduct * countProduct;
             }else{
-                priceProduct = (priceProduct * countProduct)/4;
+                priceProduct=(priceProduct * countProduct)/4;
             }
-
-            if(countProduct>300&&priceProduct>100){
+            if(countProduct>300&&priceProduct>100&&countSoldProduct<100){
                 priceProduct = priceProduct/2;
+            }else{
+                priceProduct = priceProduct+(priceProduct * 0.3);
             }
         }
 
@@ -81,6 +75,17 @@ class Product{
 
 int main()
 {
+    Product phones = Product(100, "Phones", 200);
+    Product computers = Product(100, "Computers", 300);
+    Product monic= Product(100, "Monitors", 400);
+
+    for(int i = 0;i<3;i++){
+        computers.buy();
+    }
+    //phones.pay();
+    //phones.features();
+    computers.features();
+    //monic.features();
 
     return 0;
 }
