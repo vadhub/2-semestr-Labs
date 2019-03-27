@@ -1,6 +1,12 @@
 #include <iostream>
+#include <cmath>
+#include <iomanip>
 
 using namespace std;
+
+float average(float num, float sum){
+    return sum/num;
+}
 
 int main()
 {
@@ -8,10 +14,8 @@ int main()
     int numArray = 0;
 
     int n = 0;
-    int i =0, j = 0;
-    int k = 0, g = 0;
 
-    float sum = 0, result = 0, res = 0;
+    float summator = 0, num= 0, res = 0;
     int formul = 0;
     cin >> numArray;
 
@@ -23,86 +27,46 @@ int main()
     cout<<formul;
     float **arrayA = new float *[numArray];
     float **arrayB = new float *[numArray];
+    float **arraySmall = new float *[formul];
 
-    for (i = 1; i<=numArray;i++){
+    for (int i = 0; i<numArray;i++){
         arrayA[i] = new float[numArray];
         arrayB[i] = new float[numArray];
     }
-    cout << "enter the numbers:\n";
-    for(i = 1;i<=numArray;i++){
-        for(j = 1;j<=numArray;j++){
-            cout << "array[" << i << "][" << j <<"]: ";
-            cin >> arrayA[i][j];
+
+    for(int i = 0; i< formul; i++){
+        arraySmall[i] = new float[numArray];
+    }
+    std::cout << "enter the numbers:\n";
+    for(int i = 0;i<numArray;i++){
+        for(int j = 0;j<numArray;j++){
+            std::cout << "array[" << i << "][" << j <<"]: ";
+            std::cin >> arrayA[i][j];
         }
     }
 
     //algot
 
-    for(i = 1;i<=numArray;i++){
-        for(j = 1;j<=numArray;j++){
-                for(k = 1;k<=formul;k++){
-                    for(g = 1; g<=formul; g++){
-                        sum += arrayA[i][j];
-                        if(i>1&&i<numArray){
-                            if((i+k)>numArray){
-                                sum += 0;
-                            }else{
-                                sum+=arrayA[i+k][j];
-                            }
-                            cout<<"1\n";
+    for(int i = 0;i<numArray;i++){
+        for(int j = 0;j<numArray;j++){
 
-                        }else if(j>1&&j<numArray){
-                            if((j+g)>numArray){
-                                sum += 0;
-                            }else{
-                                sum+=arrayA[i][j+g];
-                            }
-                            cout<<"2\n";
-                        }else if(j<numArray&&j>1){
-                            if((j-g)<1){
-                                sum += 0;
-                            }else{
-                                sum+=arrayA[i][j-g];
-                            }
-                            cout<<"3\n";
-
-                        }else if(i<numArray&&i>z
-                                 ){
-                            if((j-k)<0){
-                                sum += 0;
-                            }else{
-                                sum+=arrayA[i-k][j];
-                            }
-                            cout<<"4\n";
-                        }else{
-                            sum += 0;
-                        }
-                        res++;
+                for(int k = -formul;k<0;k++){
+                    for(int f = -formul; f<0; f++){
+                        summator += arrayA[k][f];
+                        num++;
                     }
                 }
-
-
-
-                if(res>0){
-                    arrayB[i][j] = sum /res;
-                    sum = 0;
-                    res = 0;
-                    cout<<"a\n";
-                }else {
-                    arrayB[i][j] = 0;
-                    sum = 0;
-                }
+                arrayB[i][j] = average(num, summator);
         }
+
     }
 
-        cout<<"b\n";
-     for(i = 1;i<=numArray;i++){
-        for(j =1;j<=numArray;j++){
-            cout << arrayB[i][j];
-
-            cout << "\t";
+     for(int i = 0;i<numArray;i++){
+        for(int j =0;j<numArray;j++){
+            std::cout<< std::setprecision(5)<< arrayB[i][j];
         }
-        cout << "\n";
+
+        std::cout<<"\n";
     }
 
     return 0;

@@ -11,6 +11,43 @@ class Product{
        private: int countSoldProduct = 0;
 
 
+       //getters setters
+
+       public:
+        int getCountProduct(){
+           return countProduct;
+        }
+
+       void setCountProduct(int countProd){
+            countProduct = countProd;
+       }
+
+       string getNameProduct(){
+            return nameProduct;
+       }
+
+       void setNameProduct(string nameprod){
+            nameProduct = nameprod;
+       }
+
+       double getPriceProduct(){
+            return priceProduct;
+       }
+
+       void setPriceProduct(double price){
+            priceProduct = price;
+       }
+
+       int getCountSoldProduct(){
+            return countSoldProduct;
+       }
+
+       void setCountSoldProduct(int countsp){
+            countSoldProduct = countsp;
+       }
+
+
+
         public: Product(int c, string name, double p){
             if(c<0){
                 countProduct = 0;
@@ -28,20 +65,16 @@ class Product{
             }
        };
 
-       //copy constructor
-       public: Pruduct(Product & obj){
-                private: int countProduct;
-                private: string nameProduct;
-                private: double priceProduct;
-                private: int countSoldProduct = 0;
-       }
-
        //destruct
        public: ~Product(){
             cout<<"destructor"<<endl;
        }
 
-        public: Product(){ cout<<"constructor without parameters"<<endl;};
+       public: Product(const Product &product):  countProduct(product.countProduct), nameProduct(product.nameProduct), priceProduct(product.priceProduct), countSoldProduct(product.countSoldProduct){
+           std::cout<<"copy constructor";
+       }
+
+        public: Product(){ std::cout<<"constructor without parameters"<<endl;};
 
         public: void buy(){
             countProduct--;
@@ -54,7 +87,7 @@ class Product{
         }
 
         public: void features(){
-            cout<<"| "<<nameProduct<<" | "<<priceProduct<<" | "<<countProduct<< endl;
+            std::cout<<"| "<<nameProduct<<" | "<<priceProduct<<" | "<<countProduct<< endl;
         }
 
         private: int price(){
@@ -78,10 +111,13 @@ int main()
     Product phones = Product(100, "Phones", 200);
     Product computers = Product(100, "Computers", 300);
     Product monic= Product(100, "Monitors", 400);
-
+    Product sdd(monic);
     for(int i = 0;i<3;i++){
         computers.buy();
     }
+
+
+
     //phones.pay();
     //phones.features();
     computers.features();
