@@ -49,21 +49,37 @@ int main()
 
     for(int i = 0;i<numArray;i++){
         for(int j = 0;j<numArray;j++){
+                summator = arrayA[i][j];
+                num = 0;
+                for(int k = 0;k<formul;k++){
+                    for(int f = 0; f<formul; f++){
 
-                for(int k = -formul;k<0;k++){
-                    for(int f = -formul; f<0; f++){
-                        summator += arrayA[k][f];
-                        num++;
+                        if(((i-n)+k)<numArray &&((i-n)+k)>0){
+                            summator += arrayA[((i-n)+k)][j-n];
+                            num++;
+                        }else if(((j-n)+f)<numArray && ((j-n)+f)>0){
+                            summator += arrayA[i-n][((j-n)+f)];
+                            num++;
+                        }else if((i-n)>0&&(j-n)>0){
+                            summator += arrayA[i-n][j-n];
+                            num++;
+                        }else{
+                            summator+=0;
+                        }
                     }
                 }
-                arrayB[i][j] = average(num, summator);
+
+                res = summator/num;
+                arrayB[i][j] = res;
+
         }
 
     }
+    std::cout<<"\n";
 
      for(int i = 0;i<numArray;i++){
         for(int j =0;j<numArray;j++){
-            std::cout<< std::setprecision(5)<< arrayB[i][j];
+            std::cout<<setprecision(2)<<arrayB[i][j]<<" ";
         }
 
         std::cout<<"\n";
