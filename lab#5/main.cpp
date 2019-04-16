@@ -11,10 +11,36 @@ class PhysicalBody{
         //t = (v - v0)/a
 
     public:
+        double getV(){
+            return v;
+        }
+
+        void setV(double sV){
+           v = sV;
+        }
+
+        double getA(){
+            return v;
+        }
+
+
+        void setV(double sA){
+            a = sA;
+        }
+
+        double getV0(){
+            return v;
+        }
+
+
+        void setV(double sV0){
+           v0 = sV0;
+        }
+
         PhysicalBody(double vs, double as, double v0s){
-            vs = v;
-            as = a;
-            v0 = v0s;
+            v = vs;
+            a = as;
+            v0a = v0;
         }
 
         double timeAcc(double vs, double as){
@@ -30,6 +56,5 @@ class PhysicalBody{
 
 int main()
 {
-
     return 0;
 }
