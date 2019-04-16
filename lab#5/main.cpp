@@ -37,6 +37,12 @@ class PhysicalBody{
            v0 = sV0;
         }
 
+        public: ~PhysicalBody(){
+            cout<<"destructor"<<endl;
+        }
+
+        public: PhysicalBody(const PhysicalBody &physicalBody): v(physicalBody.v), a(physicalBody.a), v0(physicalBody.v0){};
+
         PhysicalBody(double vs, double as, double v0s){
             v = vs;
             a = as;
