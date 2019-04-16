@@ -49,28 +49,22 @@ int main()
 
     for(int i = 0;i<numArray;i++){
         for(int j = 0;j<numArray;j++){
-                summator = arrayA[i][j];
-                num = 0;
-                for(int k = 0;k<formul;k++){
-                    for(int f = 0; f<formul; f++){
+            summator = arrayA[i][j];
+            num = 0;
 
-                        if(((i-n)+k)<numArray &&((i-n)+k)>0){
-                            summator += arrayA[((i-n)+k)][j-n];
-                            num++;
-                        }else if(((j-n)+f)<numArray && ((j-n)+f)>0){
-                            summator += arrayA[i-n][((j-n)+f)];
-                            num++;
-                        }else if((i-n)>0&&(j-n)>0){
-                            summator += arrayA[i-n][j-n];
-                            num++;
-                        }else{
-                            summator+=0;
-                        }
-                    }
+            int top = i>=n?i-n:0;
+            int down = i<numArray-n?i+n:numArray;
+
+            for(int k = top;k<down;k++){
+                    int left = i>=n?i-n:0;
+                    int right = i<numArray-n?i+n:numArray;
+                for(int f = left; f<right;f++){
+                    summator += arrayA[k][f];
+                    num++;
                 }
+            }
 
-                res = summator/num;
-                arrayB[i][j] = res;
+            arrayB[i][j] = summator/num;
 
         }
 
