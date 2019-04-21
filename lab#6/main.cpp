@@ -1,23 +1,26 @@
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
 class Multiplied{
 private:
-        int i, j;
-        std::vector<float> num1;
-        std::vector<float> num2;
+        int i, sizeArray;
 
-        std::vector<float> list1;
+        float *arr = new float[syzeArray];
 
-        std::vector<float> multiply(std::vector<float> a, std::vector<float> b, std::vector<float> c){
-
+        void multiply(){
+            for(i = 0;i<list1.size();i++){
+                list_result[i] = list1[i]*list2[i];
+            }
         }
 
 
 public:
-        Multiplied(std::vector<float> listA, std::vector<float> listB, std::vector<float> result){};
+        Multiplied(std::list<float> listA, std::list<float> listB, std::list<float> result){
+            listA = list1;
+            listB = list2;
+            result = list_result;
+        };
 
         Multiplied operator* (Multiplied const& mlt) const{
         }
