@@ -4,25 +4,18 @@ using namespace std;
 
 class Multiplied{
 private:
-        int i, sizeArray;
+        int i, length;
 
-        float *arr = new float[syzeArray];
-
-        void multiply(){
-            for(i = 0;i<list1.size();i++){
-                list_result[i] = list1[i]*list2[i];
-            }
-        }
-
+        float arr[] = float[length];
 
 public:
-        Multiplied(std::list<float> listA, std::list<float> listB, std::list<float> result){
-            listA = list1;
-            listB = list2;
-            result = list_result;
+        Multiplied(int length, float *arr){
+            length = length;
+            arr = arr;
         };
 
-        Multiplied operator* (Multiplied const& mlt) const{
+        friend Multiplied operator* (Multiplied& mlt1, Multiplied& mlt2){
+            return Multiplied(mlt1.arr * mlt2.arr);
         }
 };
 
