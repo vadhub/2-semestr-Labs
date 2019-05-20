@@ -1,12 +1,8 @@
 #include <iostream>
-#include <cmath>
 #include <iomanip>
 
-using namespace std;
 
-float average(float num, float sum){
-    return sum/num;
-}
+using namespace std;
 
 int main()
 {
@@ -15,7 +11,7 @@ int main()
 
     int n = 0;
 
-    float summator = 0, num= 0, res = 0;
+    double summator = 0, num= 0;
     int formul = 0;
     cin >> numArray;
 
@@ -24,22 +20,18 @@ int main()
     cin >> n;
 
     formul = 2*n + 1;
-    cout<<formul;
-    float **arrayA = new float *[numArray];
-    float **arrayB = new float *[numArray];
-    float **arraySmall = new float *[formul];
 
-    for (int i = 0; i<numArray;i++){
-        arrayA[i] = new float[numArray];
-        arrayB[i] = new float[numArray];
+    double **arrayA = new double *[numArray];
+    double **arrayB = new double *[numArray];
+
+    for (int i = 1; i<=numArray;i++){
+        arrayA[i] = new double[numArray];
+        arrayB[i] = new double[numArray];
     }
 
-    for(int i = 0; i< formul; i++){
-        arraySmall[i] = new float[numArray];
-    }
     std::cout << "enter the numbers:\n";
-    for(int i = 0;i<numArray;i++){
-        for(int j = 0;j<numArray;j++){
+    for(int i = 1;i<=numArray;i++){
+        for(int j = 1;j<=numArray;j++){
             std::cout << "array[" << i << "][" << j <<"]: ";
             std::cin >> arrayA[i][j];
         }
@@ -47,38 +39,46 @@ int main()
 
     //algot
 
-    for(int i = 0;i<numArray;i++){
-        for(int j = 0;j<numArray;j++){
-            summator = arrayA[i][j];
+    for(int i = 1;i<=numArray;i++){
+        for(int j = 1;j<=numArray;j++){
+            summator = 0;
             num = 0;
 
-            int top = i>=n?i-n:0;
-            int down = i<numArray-n?i+n:numArray;
+            int top = i>n?i-n:1;
+            int down = i<=numArray-n?i+n:numArray;
 
-            for(int k = top;k<down;k++){
-                    int left = i>=n?i-n:0;
-                    int right = i<numArray-n?i+n:numArray;
-                for(int f = left; f<right;f++){
+            int left = j>n?j-n:1;
+            int right = j<=numArray-n?j+n:numArray;
+
+            for(int k = top; k<=down;k++){
+                for(int f = left; f<=right;f++){
                     summator += arrayA[k][f];
-                    num++;
                 }
             }
 
-            arrayB[i][j] = summator/num;
+            arrayB[i][j] = summator/(formul*formul);
 
         }
 
     }
-    std::cout<<"\n";
 
-     for(int i = 0;i<numArray;i++){
-        for(int j =0;j<numArray;j++){
-            std::cout<<setprecision(2)<<arrayB[i][j]<<" ";
+    for(int i = 1;i<=numArray;i++){
+        for(int j = 1;j<=numArray;j++){
+            std::cout<<setprecision(2)<<arrayB[i][j]<<"\t";
         }
 
         std::cout<<"\n";
     }
 
+    for(int i = 1;i<=numArray;i++)
+        delete[] arrayA[i];
+    delete [] arrayA;
+
+    for(int i = 1;i<=numArray;i++)
+        delete[] arrayB[i];
+    delete [] arrayB;
+
+    cin.get();
     return 0;
 }
 

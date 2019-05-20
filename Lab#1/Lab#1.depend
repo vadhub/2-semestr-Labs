@@ -1,6 +1,5 @@
 # depslib dependency file v1.0
-1554402532 source:b:\labs\lab#1\main.cpp
+1557222692 source:b:\labs\lab#1\main.cpp
 	<iostream>
-	<cmath>
 	<iomanip>
 

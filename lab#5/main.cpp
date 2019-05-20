@@ -38,7 +38,7 @@ class PhysicalBody{
         }
 
         public: ~PhysicalBody(){
-            cout<<"destructor"<<endl;
+            cout<<"destructor";
         }
 
         public: PhysicalBody(const PhysicalBody &physicalBody): v(physicalBody.v), a(physicalBody.a), v0(physicalBody.v0){};
@@ -49,12 +49,12 @@ class PhysicalBody{
             v0s = v0;
         }
 
-        double timeAcc(double v0s, double as){
-            return v0s/as;
+        double timeAcc(){
+            return v0/a;
         }
 
-        double timeAcc(double v0s, double as, double vs){
-            return (vs-v0s)/as;
+        double timeAcc(double vs){
+            return (vs-v0)/a;
         }
 
 
@@ -62,14 +62,14 @@ class PhysicalBody{
 
 int main()
 {
-    double v = 10.2;
+    double v = 1.2;
     double a = 1.1;
     double v0 = 10;
 
     double time;
 
     PhysicalBody pb = PhysicalBody(v, a, v0);
-    time = pb.timeAcc(v0, a);
-    std::cout<<"Time acceleration"<<time<<std::endl;
+    time = pb.timeAcc(v);
+    std::cout<<"Time acceleration "<<time<<std::endl;
     return 0;
 }
