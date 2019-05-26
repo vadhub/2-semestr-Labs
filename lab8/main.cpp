@@ -229,7 +229,7 @@ public:
     }
 
     void inscribed() override{
-        if(((angles[0]+angles[2]) == (angles[1]+angles[3]))&&((a==c)&&(b==d))){
+        if(((angles[0]+angles[2]) == (angles[1]+angles[3]))){
             double p = a+b;
             double r = (a*b)/p;
 
@@ -438,7 +438,7 @@ int main()
     double angle2[] = {30, 30, 40, 40};
 
     trapezium tr(1, 4, 3, 4, angle1);
-    triangel tre(3, 6, 5);
+    triangel tre(3, 4, 5);
     rectangle rec(3, 4, 3, 4, angle2);
     pentagonal pen5(3);
 

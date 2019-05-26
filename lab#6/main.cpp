@@ -9,8 +9,6 @@ class Multiplied{
 
 private:
         vector<int> vector_;
-        set<int> set_;
-
 public:
 
         Multiplied(){}
@@ -27,21 +25,17 @@ public:
             return vector_;
         }
 
-       void setSet(const set<int> &s){
-            set_ = s;
-       }
+       Multiplied operator * (Multiplied m1){
 
-        set<int> getSet(){
-            return set_;
-        }
-
-        Multiplied operator * (Multiplied m1){
+           //избавиться от лишних полей
+           set<int> set_;
             Multiplied result;
             for(int i =0;i<vector_.size(); i++){
                 for(int j =0;j<m1.vector_.size(); j++){
-                    result.set_.insert(vector_[i] * m1.vector_[j]);
+                    set_.insert(m1.vector_[j] * vector_[i]);
                 }
             };
+            result.vector_.assign(set_.begin(), set_.end());
             return result;
     }
 };
@@ -56,18 +50,19 @@ int main()
     ser.push_back(2);
     ser.push_back(3);
 
+
     ser2.push_back(4);
     ser2.push_back(5);
     ser2.push_back(6);
-    ser2.push_back(8);
+
 
     Multiplied a(ser);
     Multiplied b(ser2);
 
-    Multiplied c = b * a;
+    Multiplied c = a * b;
 
-   for(set<int>::iterator it = c.getSet().begin(); it!=c.getSet().end(); ++it){
-        cout<<*it<<" ";
+   for(int i =0; i<c.getVector().size(); i++){
+        cout<<c.getVector()[i]<<' ';
    }
 
     cout << "Hello world!" << endl;
