@@ -1,5 +1,7 @@
 # depslib dependency file v1.0
-1558863676 source:b:\labs\lab#7\main.cpp
+1558865646 source:b:\labs\lab#7\main.cpp
 	<iostream>
 	<set>
+	<algorithm>
+	<vector>
 
