@@ -1,5 +1,6 @@
 #include <iostream>
 #include <set>
+#include <algorithm>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ class Set{
         }
 
 //getter setter
-        set<T> getSet(){
+        const set<T> &getSet(){
             return a;
         }
 
@@ -32,6 +33,16 @@ class Set{
 
             result.a.insert(a.begin(), a.end());
             result.a.insert(s.a.begin(), s.a.end());
+
+            return result;
+        }
+
+        Set<T> operator -(Set<T> s){
+
+            Set result;
+
+            sort(a.begin(), a.end());
+            sort(s.a.begin(), s.a.end());
 
             return result;
         }
